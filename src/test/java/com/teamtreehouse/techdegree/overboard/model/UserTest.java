@@ -81,6 +81,35 @@ public class UserTest {
         assertTrue("Answer should be marked as accepted", answer.isAccepted());
     }
 
+
+    @Test
+    public void testQuestionUpVoteIncreasesQuestionerReputation() {
+        // Arrange
+        int initialReputation = questioner.getReputation();
+
+        // Act
+        voter.upVote(question);
+
+        // Assert
+        assertEquals("Questioner's reputation should increase by 5 points", initialReputation + 5, questioner.getReputation());
+    }
+
+
+
+    @Test
+    public void testAnswerUpVoteIncreasesAnswererReputation() {
+        // Arrange
+        int initialReputation = answerer.getReputation();
+
+        // Act
+        voter.upVote(answer);
+
+        // Assert
+        assertEquals("Answerer's reputation should increase by 10 points", initialReputation + 10, answerer.getReputation());
+    }
+
+
+
     @Test
     public void testAnswerAcceptedChangesReputation() {
         // Arrange
