@@ -43,6 +43,16 @@ public class UserTest {
     }
 
     @Test
+    public void testSelfUpvoteQuestionThrowsException() {
+        // Expect exception
+        expectedException.expect(VotingException.class);
+        expectedException.expectMessage("You cannot vote for yourself!");
+
+        // Act
+        questioner.upVote(question);
+    }
+
+    @Test
     public void testSelfUpvoteAnswerThrowsException() {
         // Expect exception
         expectedException.expect(VotingException.class);
